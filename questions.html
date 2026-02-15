@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>My Heart Questions 💕</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="floating-hearts"></div>
+
+<form class="glass-box" onsubmit="submitAnswers(event)">
+
+<h2 class="typing">Answer Honestly With Promise 💖</h2>
+
+<textarea id="whyLove" 
+placeholder="Why do you love me?" required></textarea>
+
+<textarea id="wrongChoice"
+placeholder="In life which is your wrong choice you regret still now?" 
+required></textarea>
+
+<textarea id="important"
+placeholder="Am I important to you apart from your uncle's family or your sister?" 
+required></textarea>
+
+<textarea id="importanceWay"
+placeholder="In which way am I important to you?" 
+required></textarea>
+
+<textarea id="missTrips"
+placeholder="Did you miss me in any situations when you're with your family especially trips? Honest answer with promise of your mom." 
+required></textarea>
+
+<textarea id="youMissing"
+placeholder="Did you know sometimes I felt missing you even when you were there? Give exact situation." 
+required></textarea>
+
+<button type="submit">Submit My Love 💝</button>
+
+</form>
+
+<script src="script.js"></script>
+
+
+<script>
+function goNext(e){
+  e.preventDefault();
+  window.location = "memories.html";
+}
+</script>
+
+</body>
+</html>
