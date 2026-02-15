@@ -32,30 +32,48 @@ function showNext(){
 
 
 // 💕 QUESTIONS PAGE
-function submitAnswers(e){
-  e.preventDefault();
+document.addEventListener("DOMContentLoaded", function(){
 
-  const newEntry = {
-    date: new Date().toLocaleString(),
-    whyLove: document.getElementById("whyLove").value,
-    wrongChoice: document.getElementById("wrongChoice").value,
-    important: document.getElementById("important").value,
-    importanceWay: document.getElementById("importanceWay").value,
-    missTrips: document.getElementById("missTrips").value,
-    youMissing: document.getElementById("youMissing").value
-  };
+  const form = document.getElementById("loveForm");
 
-  // Get old data
-  let allAnswers = JSON.parse(localStorage.getItem("allAnswers")) || [];
+  if(form){
+    form.addEventListener("submit", async function(e){
+      e.preventDefault();
 
-  // Add new entry
-  allAnswers.push(newEntry);
+      const data = {
+        whyLove: document.getElementById("whyLove").value,
+        wrongChoice: document.getElementById("wrongChoice").value,
+        important: document.getElementById("important").value,
+        importanceWay: document.getElementById("importanceWay").value,
+        missTrips: document.getElementById("missTrips").value,
+        youMissing: document.getElementById("youMissing").value
+      };
 
-  // Save back
-  localStorage.setItem("allAnswers", JSON.stringify(allAnswers));
+      try{
+        const response = await fetch("https://formspree.io/f/mvzbalod", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(data)
+        });
 
-  window.location.href = "memories.html";
-}
+        if(response.ok){
+          alert("Submitted successfully my love 💌");
+          window.location.href = "memories.html";
+        } else {
+          alert("Something went wrong 😢");
+        }
+
+      } catch(error){
+        alert("Error sending form ❌");
+      }
+
+    });
+  }
+
+});
+
 
 let currentSlide = 0;
 const slider = document.getElementById("slider");
